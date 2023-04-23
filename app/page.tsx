@@ -13,39 +13,34 @@ const styles = {
   button: `border p-4 ml-2 sm:mt-0 bg-gray-900/70 text-white rounded-[20px]`,
   input: `border outline-gray-900/70 w-full text-xl p-3 rounded-[20px]`,
   count: `text-center p-4 text-bold text-xl`,
-  // ul:`p-3`,
   li: `flex justify-between p-3 my-2`,
   liCompleted: `flex justify-between bg-slate-200 capitalize `,
   row: `flex`,
   text: `ml-2 cursor-pointer text-xl`,
   ul: ``,
-  // checkbox:`valid:border-green-500`,
   textCompleted: `ml-2 cursor-pointer line-through text-xl`,
 };
-let list = ["abc", "def", "ghi", "jkl", "mno", "pqr", "stu ", "vwx", "yz"];
-// let list=['abc','def','ghi','jkl','mno']
+
 const Home = () => {
-  const [todo, setTodo] = useState([]);
+  const [todo, setTodo] = useState<string[]>([]);
+
   useEffect(() => {
     const q = query(collection(db, "todos"));
   });
 
-  // const todoAdder=(event:any)=>{
-  //   event.preventDefault();
-  //   const data=event.target.value
-  //   setTodo([...todo,data])
-  // }
-  const todoAdder = (event: any) => {
+  const todoAdder = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const data = event.target.elements.task.value;
-    if (data == "") {
+    const formData = new FormData(event.currentTarget);
+    const data = formData.get("task") as string;
+    if (!data) {
       alert("Please write some text first");
     } else {
       setTodo([...todo, data]);
     }
-    event.target.reset();
+    event.currentTarget.reset();
   };
+
   return (
     <div className={styles.bg}>
       <head>

@@ -108,7 +108,7 @@ const Home = () => {
           </button>
         </form>
         <ul className={styles.ul}>
-          {todo.map((todo, index) => (
+          {todo.map((todo: any, index) => (
             // <Todo key={index} todo={todo} toggle={toggle} />
             // <Todo
             //   key={index}

@@ -13,13 +13,8 @@ const style = {
   checkbox: `valid:border-green-500`,
   textCompleted: `ml-2 cursor-pointer line-through text-xl`,
 };
-interface Props {
-  Todo: {
-    text: string;
-  };
-}
 
-const Todo: React.FC<Props> = ({ todo }) => {
+const Todo: React.FC<Props> = ({ todo }: any) => {
   return (
     <ul>
       <li className={style.li}>

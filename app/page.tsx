@@ -3,7 +3,12 @@ import React, { useState, useEffect } from "react";
 import Todo from "@/component/Todo";
 import { AiOutlinePlus } from "react-icons/ai";
 import { db } from "@/component/Config/firebase.config";
-import { collection, onSnapshot, query } from "firebase/firestore";
+import {
+  QuerySnapshot,
+  collection,
+  onSnapshot,
+  query,
+} from "firebase/firestore";
 
 const styles = {
   bg: `min-h-screen w-screen p-4 bg-gradient-to-r from-gray-600 to-gray-800`,
@@ -24,9 +29,29 @@ const styles = {
 const Home = () => {
   const [todo, setTodo] = useState<string[]>([]);
 
+  // useEffect(() => {
+  //   const q = query(collection(db, "todos"));
+  //   const unsubscribe = onSnapshot(q, (QuerySnapshot) => {
+  //     let todoList: [] = [];
+  //     QuerySnapshot.forEach((doc) => {
+  //       todoList.push({ ...doc.data(), id: doc.id });
+  //     });
+  //     setTodo(todoList);
+  //   });
+  //   return () => unsubscribe();
+  // }, []);
+
   useEffect(() => {
     const q = query(collection(db, "todos"));
-  });
+    const unsubscribe = onSnapshot(q, (QuerySnapshot) => {
+      let todoList: Array<any> = [];
+      QuerySnapshot.forEach((doc) => {
+        todoList.push({ ...doc.data(), id: doc.id });
+      });
+      setTodo(todoList);
+    });
+    return () => unsubscribe();
+  }, []);
 
   const todoAdder = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

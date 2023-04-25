@@ -6,15 +6,15 @@ import { FaRegTrashAlt } from "react-icons/fa";
 
 const style = {
   // ul:`p-3`,
-  li: `flex justify-between p-3 my-2 bg-gray-500/90`,
+  li: `flex justify-between p-3 my-2 bg-gray-500`,
   liCompleted: `flex justify-between bg-slate-200 capitalize `,
   row: `flex`,
-  textStyle: `ml-2 cursor-pointer text-md`,
+  textStyle: `ml-2 cursor-pointer text-md `,
   checkbox: `valid:border-green-500`,
   textCompleted: `ml-2 cursor-pointer line-through text-green-600 text-md`,
 };
 
-const Todo: any = ({ todo, toggle }: any) => {
+const Todo: any = ({ todo, toggle, deleteTodo }: any) => {
   return (
     <ul>
       <li className={todo.copleted ? style.liCompleted : style.li}>
@@ -32,7 +32,10 @@ const Todo: any = ({ todo, toggle }: any) => {
             {todo.text}
           </p>
         </div>
-        <FaRegTrashAlt />
+        <FaRegTrashAlt
+          className={"cursor-pointer"}
+          onClick={() => deleteTodo(todo.id)}
+        />
       </li>
     </ul>
   );

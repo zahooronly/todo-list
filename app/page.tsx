@@ -12,6 +12,7 @@ import {
   updateDoc,
   doc,
   addDoc,
+  deleteDoc,
 } from "firebase/firestore";
 // if (typeof window === "undefined") {
 //   suppressHydrationWarning(true);
@@ -85,6 +86,10 @@ const Home = () => {
     }
   };
 
+  const deleteTodo = async (id: any) => {
+    await deleteDoc(doc(db, "todos", id));
+  };
+
   return (
     <div className={styles.bg}>
       <head>
@@ -115,7 +120,12 @@ const Home = () => {
             //   todo={{ id: todo.id, text: todo.text, completed: todo.completed }}
             //   toggle={toggle}
             // />
-            <Todo key={index} todo={todo} toggle={toggle} />
+            <Todo
+              key={index}
+              todo={todo}
+              toggle={toggle}
+              deleteTodo={deleteTodo}
+            />
           ))}
         </ul>
         <p className={styles.count}>You have {todo.length} todos</p>

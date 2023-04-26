@@ -1,11 +1,7 @@
 import React from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
-// interface Props {
-//   todo: string;
-// }
 
 const style = {
-  // ul:`p-3`,
   li: `flex justify-between p-3 my-2 bg-gray-500`,
   liCompleted: `flex justify-between bg-slate-200 capitalize `,
   row: `flex`,
@@ -42,28 +38,3 @@ const Todo: any = ({ todo, toggle, deleteTodo }: any) => {
 };
 
 export default Todo;
-
-// import React from "react";
-
-// interface Props {
-//   key: number;
-//   todo: {
-//     id: string;
-//     text: string;
-//     completed: boolean;
-//   };
-//   toggle: (todo: { id: string; completed: boolean }) => Promise<void>;
-// }
-
-// const Todo = ({ todo, toggle }: any) => {
-//   return (
-//     <li
-//       onClick={() => toggle(todo)}
-//       className={`${todo.completed ? styles.liCompleted : styles.li}`}
-//     >
-//       <div className={styles.row}>
-//         <div className={styles.textStyle}>{todo.text}</div>
-//       </div>
-//     </li>
-//   );
-// };

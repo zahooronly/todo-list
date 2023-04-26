@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect } from "react";
-// import { suppressHydrationWarning } from "re act-dom/server";
 import Todo from "@/component/Todo";
 import { AiOutlinePlus } from "react-icons/ai";
 import { db } from "@/component/Config/firebase.config";
@@ -14,9 +13,8 @@ import {
   addDoc,
   deleteDoc,
 } from "firebase/firestore";
-// if (typeof window === "undefined") {
-//   suppressHydrationWarning(true);
-// }
+import Login from "@/component/Authentication/Login/Login";
+
 const styles = {
   bg: `min-h-screen w-screen p-4 bg-gradient-to-r from-gray-600 to-gray-800`,
   heading: `text-4xl font-bold text-center text-gray-700 p-3`,
@@ -37,8 +35,6 @@ const Home = () => {
   const [todo, setTodo] = useState<string[]>([]);
   const [input, setInput] = useState("");
 
-  // Create Data      *C*
-  // const createTodo = async () => {};
   // Read Data      *R*
   useEffect(() => {
     const q = query(collection(db, "todos"));
@@ -52,15 +48,6 @@ const Home = () => {
     return () => unsubscribe();
   }, []);
 
-  // Updata Data    *U*
-  // const toggle = async (todo: any) => {
-  //   await updateDoc(doc(db, "todos", todo.id), {
-  //     completed: !todo.completed,
-  //   });
-  // };
-  // Props;
-
-  // const toggle = async (todo: { id: string; completed: boolean }) => {
   const toggle: any = async (todo: any) => {
     await updateDoc(doc(db, "todos", todo.id), {
       completed: !todo.completed,
@@ -76,12 +63,10 @@ const Home = () => {
       alert("Please write some text first");
       return;
     } else {
-      // setTodo([...todo, data]);
       await addDoc(collection(db, "todos"), {
         text: input,
         completed: false,
       });
-      // setInput(event.target.reset());
       setInput("");
     }
   };
@@ -114,12 +99,6 @@ const Home = () => {
         </form>
         <ul className={styles.ul}>
           {todo.map((todo: any, index) => (
-            // <Todo key={index} todo={todo} toggle={toggle} />
-            // <Todo
-            //   key={index}
-            //   todo={{ id: todo.id, text: todo.text, completed: todo.completed }}
-            //   toggle={toggle}
-            // />
             <Todo
               key={index}
               todo={todo}
@@ -130,6 +109,7 @@ const Home = () => {
         </ul>
         <p className={styles.count}>You have {todo.length} todos</p>
       </div>
+      {/* <Login /> */}
     </div>
   );
 };

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Todo from "@/component/Todo";
 import { AiOutlinePlus } from "react-icons/ai";
 import { db } from "@/component/Config/firebase.config";
+import Login from "@/component/Authentication/Login/Login";
 import {
   QuerySnapshot,
   collection,
@@ -13,7 +14,6 @@ import {
   addDoc,
   deleteDoc,
 } from "firebase/firestore";
-import Login from "@/component/Authentication/Login/Login";
 
 const styles = {
   bg: `min-h-screen w-screen p-4 bg-gradient-to-r from-gray-600 to-gray-800`,
@@ -59,6 +59,7 @@ const Home = () => {
 
     const formData = new FormData(event.currentTarget);
     const data = formData.get("task") as string;
+    setInput("");
     if (!data) {
       alert("Please write some text first");
       return;
@@ -67,7 +68,6 @@ const Home = () => {
         text: input,
         completed: false,
       });
-      setInput("");
     }
   };
 

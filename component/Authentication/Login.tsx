@@ -1,42 +1,45 @@
-import { auth, signInWithEmailAndPassword } from "@/Config/firebase.config";
 import React, { useState } from "react";
-
-// styles
-const styles = {
-  container: ``,
-};
+import { auth, createUserWithEmailAndPassword } from "@/Config/firebase.config";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const emailHandler = (e: any) => {
+
+  const emailHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   };
 
-  const passwordHandler = (e: any) => {
+  const passwordHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
-  const userLoginHandler = async (event: any) => {
+
+  const registerHandler = async (event: any) => {
     event.preventDefault();
     setEmail("");
     setPassword("");
     try {
-      const userCredential = await signInWithEmailAndPassword(
+      const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
+      // If registration is successful, you can access the user object like this:
+      const user = userCredential.user;
+      console.log("New user registered:", user.uid);
+      // Redirect the user to the home page or a dashboard page
+      // depending on your application.
     } catch (error: any) {
       alert("Error occurred: " + error.message);
     }
   };
+
   return (
-    <div className={styles.container}>
+    <div>
       <header>
-        <title>Login here</title>
+        <title>Register here</title>
       </header>
       <body>
-        <h1>Login here</h1>
+        <h1>Register here</h1>
         <div>
           <input
             type="email"
@@ -50,7 +53,7 @@ const Login = () => {
             onChange={passwordHandler}
             value={password}
           />
-          <button onClick={userLoginHandler}>Login</button>
+          <button onClick={registerHandler}>Register</button>
         </div>
       </body>
     </div>

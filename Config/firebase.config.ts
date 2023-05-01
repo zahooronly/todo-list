@@ -2,15 +2,18 @@
 import { initializeApp } from "firebase/app";
 // import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
-
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
 const firebaseConfig = {
   apiKey: "AIzaSyAAmHHXiqz7S68UPVdusddB0aAI71_Z3VQ",
   authDomain: "todo-app-8008.firebaseapp.com",
+  databaseURL: "https://todo-app-8008-default-rtdb.firebaseio.com",
   projectId: "todo-app-8008",
   storageBucket: "todo-app-8008.appspot.com",
   messagingSenderId: "1018809230584",
@@ -19,6 +22,11 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+
 // const analytics = getAnalytics(app);
-export const db=getFirestore(app);
+const app = initializeApp(firebaseConfig);
+
+const storage = getStorage(app);
+const db=getFirestore(app);
+const auth = getAuth(app);
+export {db,storage, auth, createUserWithEmailAndPassword, signInWithEmailAndPassword}

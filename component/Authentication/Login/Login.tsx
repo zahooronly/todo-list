@@ -1,6 +1,9 @@
 import { auth, signInWithEmailAndPassword } from "@/Config/firebase.config";
 import React, { useState } from "react";
+import { global } from "styled-jsx/css";
+import "tailwindcss/tailwind.css";
 
+// global
 // styles
 const styles = {
   container: ``,

@@ -91,7 +91,7 @@ const TodoList = () => {
             placeholder="Enter your task..."
           />
           <button className={styles.button} type="submit">
-            <AiOutlinePlus size={30} />
+            <AiOutlinePlus size={30} className="bg-black" />
           </button>
         </form>
         <ul className={styles.ul}>

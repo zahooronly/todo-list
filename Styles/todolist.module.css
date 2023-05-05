@@ -15,7 +15,7 @@
   @apply flex justify-between;
 }
 .button {
-  @apply border p-4 ml-2 sm:mt-0 bg-gray-900 text-white rounded-[20px];
+  @apply border p-4 ml-2 sm:mt-0 bg-gray-800 text-white rounded-[20px];
 }
 .input {
   @apply border outline-gray-900/70 w-full text-xl p-3 rounded-[20px];

@@ -2,7 +2,7 @@
   @apply flex justify-center items-center pl-10;
 }
 .container {
-  @apply absolute top-0 left-0 w-[80%] h-[80vh] bg-gray-900 bg-opacity-60 flex justify-center items-center z-50;
+  @apply absolute top-0 left-0 w-full h-full bg-gray-900 bg-opacity-60 flex justify-center items-center z-50;
 }
 
 .internalDiv {

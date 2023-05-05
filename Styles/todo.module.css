@@ -1,0 +1,19 @@
+.li {
+  @apply flex justify-between p-3 my-2 bg-gray-700 text-gray-200 rounded-md w-full;
+}
+.liCompleted {
+  @apply flex justify-between bg-slate-200 capitalize;
+}
+.row {
+  @apply flex;
+}
+.textStyle {
+  @apply ml-2 cursor-pointer;
+}
+.checkbox {
+  /* @apply valid:border-green-500; */
+  @apply valid:border-green-500 h-5 w-5 text-green-600;
+}
+.textCompleted {
+  @apply ml-2 cursor-pointer line-through text-green-400;
+}

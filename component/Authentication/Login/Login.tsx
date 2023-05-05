@@ -1,13 +1,9 @@
 import { auth, signInWithEmailAndPassword } from "@/Config/firebase.config";
 import React, { useState } from "react";
-import { global } from "styled-jsx/css";
 import "tailwindcss/tailwind.css";
-
+import styles from "../../../Styles/signup.module.css";
 // global
 // styles
-const styles = {
-  container: ``,
-};
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -53,7 +49,9 @@ const Login = () => {
             onChange={passwordHandler}
             value={password}
           />
-          <button onClick={userLoginHandler}>Login</button>
+          <button onClick={userLoginHandler} className={styles.button}>
+            Login
+          </button>
         </div>
       </body>
     </div>

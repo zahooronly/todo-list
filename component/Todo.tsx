@@ -1,23 +1,23 @@
 import React from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
-
-const style = {
-  li: `flex justify-between p-3 my-2 bg-gray-500`,
-  liCompleted: `flex justify-between bg-slate-200 capitalize `,
-  row: `flex`,
-  textStyle: `ml-2 cursor-pointer text-md `,
-  checkbox: `valid:border-green-500`,
-  textCompleted: `ml-2 cursor-pointer line-through text-green-600 text-md`,
-};
+import style from "../Styles/todo.module.css";
+// const style = {
+//   li: `flex justify-between p-3 my-2 bg-gray-500`,
+//   liCompleted: `flex justify-between bg-slate-200 capitalize `,
+//   row: `flex`,
+//   textStyle: `ml-2 cursor-pointer text-md `,
+//   checkbox: `valid:border-green-500`,
+//   textCompleted: `ml-2 cursor-pointer line-through text-green-600 text-md`,
+// };
 
 const Todo: any = ({ todo, toggle, deleteTodo }: any) => {
   return (
-    <ul>
+    <ul className={style.row}>
       <li className={todo.copleted ? style.liCompleted : style.li}>
         <div className={style.row}>
           <input
             onChange={() => toggle(todo)}
-            className="valid:border-green-500 h-5 w-5 text-green-600"
+            className={style.checkbox}
             type="checkbox"
             checked={todo.completed ? true : false}
           />

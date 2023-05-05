@@ -12,21 +12,22 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 import { db } from "@/Config/firebase.config";
-const styles = {
-  bg: `min-h-screen w-screen p-4 bg-gradient-to-r from-gray-600 to-gray-800`,
-  heading: `text-4xl font-bold text-center text-gray-700 p-3`,
-  container: `bg-slate-100 max-w-[60%] w-full m-auto rounded-[50px] shadow-2xl shadow-zinc-100/50 p-8`,
-  form: `flex justify-between `,
-  button: `border p-4 ml-2 sm:mt-0 bg-gray-900/70 text-white rounded-[20px]`,
-  input: `border outline-gray-900/70 w-full text-xl p-3 rounded-[20px]`,
-  count: `text-center p-4 text-bold text-xl`,
-  li: `flex justify-between p-3 my-2`,
-  liCompleted: `flex justify-between bg-slate-200 text-green-600 capitalize`,
-  row: `flex`,
-  text: `ml-2 cursor-pointer text-xl`,
-  ul: ``,
-  textCompleted: `ml-2 cursor-pointer line-through text-xl`,
-};
+import styles from "../../Styles/todolist.module.css";
+// const styles = {
+//   bg: `min-h-screen w-screen p-4 bg-gradient-to-r from-gray-600 to-gray-800`,
+//   heading: `text-4xl font-bold text-center text-gray-700 p-3`,
+//   container: `bg-slate-100 max-w-[60%] w-full m-auto rounded-[50px] shadow-2xl shadow-zinc-100/50 p-8`,
+//   form: `flex justify-between `,
+//   button: `border p-4 ml-2 sm:mt-0 bg-gray-900/70 text-white rounded-[20px]`,
+//   input: `border outline-gray-900/70 w-full text-xl p-3 rounded-[20px]`,
+//   count: `text-center p-4 text-bold text-xl`,
+//   li: `flex justify-between p-3 my-2`,
+//   liCompleted: `flex justify-between bg-slate-200 text-green-600 capitalize`,
+//   row: `flex`,
+//   text: `ml-2 cursor-pointer text-xl`,
+//   ul: ``,
+//   textCompleted: `ml-2 cursor-pointer line-through text-xl`,
+// };
 
 const TodoList = () => {
   const [todo, setTodo] = useState<string[]>([]);

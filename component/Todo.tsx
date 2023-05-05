@@ -1,5 +1,8 @@
 import React from "react";
-import { FaRegTrashAlt } from "react-icons/fa";
+import { FaRegTrashAlt, FaBeer } from "react-icons/fa";
+import { BiEdit } from "react-icons/bi";
+// import { FaBeer } from 'react-icons/fa';
+
 import style from "../Styles/todo.module.css";
 // const style = {
 //   li: `flex justify-between p-3 my-2 bg-gray-500`,
@@ -28,10 +31,14 @@ const Todo: any = ({ todo, toggle, deleteTodo }: any) => {
             {todo.text}
           </p>
         </div>
-        <FaRegTrashAlt
-          className={"cursor-pointer"}
-          onClick={() => deleteTodo(todo.id)}
-        />
+
+        <div className={style.row}>
+          <BiEdit />
+          <FaRegTrashAlt
+            className={"cursor-pointer"}
+            onClick={() => deleteTodo(todo.id)}
+          />
+        </div>
       </li>
     </ul>
   );

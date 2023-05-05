@@ -78,7 +78,7 @@ const TodoList = () => {
         <title>Todo List</title>
       </head>
       <div className={styles.container}>
-        <h3 className={styles.heading}>Todo List</h3>
+        <h3 className={styles.heading}>Your Tasks.</h3>
         <form className={styles.form} onSubmit={todoAdder}>
           <input
             type="text"

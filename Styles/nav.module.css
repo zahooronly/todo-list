@@ -1,0 +1,9 @@
+.nav {
+  @apply flex justify-between bg-slate-400;
+}
+.logo {
+  @apply text-gray-800;
+}
+.menu {
+  @apply flex space-x-7;
+}

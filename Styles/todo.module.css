@@ -5,7 +5,7 @@
   @apply flex justify-between bg-slate-200 capitalize;
 }
 .row {
-  @apply flex;
+  @apply flex justify-between space-x-3;
 }
 .textStyle {
   @apply ml-2 cursor-pointer;

@@ -1,3 +1,4 @@
+"use client";
 import "tailwindcss/tailwind.css";
 import styles from "../../../Styles/signup.module.css";
 
@@ -66,15 +67,6 @@ const Register = () => {
               // value={password}
             />
           </div>
-          {/* <div className={styles.inputDive}>
-          <input
-            type="password"
-            placeholder="confirm your password"
-            className={styles.input}
-            // onChange={passwordHandler}
-            value={password}
-          />
-        </div> */}
           <button className={styles.button} onClick={userRegisterHandler}>
             Register
           </button>

@@ -13,6 +13,7 @@ import {
 } from "firebase/firestore";
 import { db } from "@/Config/firebase.config";
 import styles from "../../Styles/todolist.module.css";
+import style from "../../Styles/nav.module.css";
 // const styles = {
 //   bg: `min-h-screen w-screen p-4 bg-gradient-to-r from-gray-600 to-gray-800`,
 //   heading: `text-4xl font-bold text-center text-gray-700 p-3`,

@@ -3,6 +3,7 @@ import { auth, signInWithEmailAndPassword } from "@/Config/firebase.config";
 import React, { useState } from "react";
 import "tailwindcss/tailwind.css";
 import styles from "../../../Styles/signup.module.css";
+import Link from "next/link";
 // global
 // styles
 
@@ -18,14 +19,15 @@ const Login = () => {
   };
   const userLoginHandler = async (event: any) => {
     event.preventDefault();
-    setEmail("");
-    setPassword("");
+    // setEmail("");
+    // setPassword("");
     try {
       const userCredential = await signInWithEmailAndPassword(
         auth,
         email,
         password
       );
+      window.location.href = "/";
     } catch (error: any) {
       alert("Error occurred: " + error.message);
     }
@@ -38,7 +40,7 @@ const Login = () => {
         </header>
         <div className={styles.container}>
           <div className={styles.internalDiv}>
-            <h1 className={styles.h1}>Login here</h1>
+            <h1 className={styles.h1}>Login here.</h1>
             <div className={styles.inputDive}>
               <input
                 type="email"
@@ -54,10 +56,16 @@ const Login = () => {
                 onChange={passwordHandler}
                 value={password}
               />
+              <button className={styles.button} onClick={userLoginHandler}>
+                Login
+              </button>
             </div>
-            <button className={styles.button} onClick={userLoginHandler}>
-              Login
-            </button>
+            <span className={styles.span}>
+              New User?{" "}
+              <span className={styles.LoginHere}>
+                <Link href={"/register"}>Register here.</Link>
+              </span>
+            </span>
           </div>
         </div>
         {/* </div> */}

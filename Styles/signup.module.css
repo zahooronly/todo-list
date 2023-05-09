@@ -13,7 +13,12 @@
 .input {
   @apply w-full px-4 py-2 rounded-md bg-gray-100 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 mb-4;
 }
-
+.span {
+  @apply mt-2;
+}
+.LoginHere {
+  @apply text-blue-500 text-center pl-8;
+}
 .inputDive {
   @apply mb-4;
 }

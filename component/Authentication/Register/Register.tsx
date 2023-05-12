@@ -20,19 +20,8 @@ const Register = () => {
   const passwordHandler = (e: any) => {
     setPassword(e.target.value);
   };
-  // const passwordHandlerConfirm = (e: any) => {
-  //   setConfirm(e.target.value);
-  // };
-  // if (password === confirm) {
-  //   setPassword(password);
-  // } else {
-  //   alert("Password doesn't match");
-  // }
   const userRegisterHandler = async (event: any) => {
     event.preventDefault();
-    // setEmail("");
-    // setPassword("");
-    // router.push("/login");
     window.location.href = "/login";
 
     try {
@@ -51,6 +40,9 @@ const Register = () => {
   return (
     <div className={styles.fullContainer}>
       <div className={styles.container}>
+        <head>
+          <title>Register here</title>
+        </head>
         {/* <div className=" fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-60 flex justify-center items-center z-50"> */}
         {/* <div className="bg-white rounded-md shadow-md p-8"> */}
         <div className={styles.internalDiv}>

@@ -8,6 +8,9 @@
   @apply bg-slate-100 min-h-full w-full m-auto rounded-[20px] shadow-2xl
   shadow-zinc-100/50 p-8;
 }
+.login {
+  @apply flex align-middle justify-center h-screen text-7xl text-red-300;
+}
 .form {
   @apply flex justify-between;
 }

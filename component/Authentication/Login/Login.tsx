@@ -1,37 +1,37 @@
 "use client";
 import { auth, signInWithEmailAndPassword } from "@/Config/firebase.config";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "tailwindcss/tailwind.css";
 import styles from "../../../Styles/signup.module.css";
 import Link from "next/link";
-// global
-// styles
-
+import { browserSessionPersistence, setPersistence } from "firebase/auth";
+let userCredential: any;
 const Login = () => {
+  // let signedIn = false;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const emailHandler = (e: any) => {
+  // const router = useRouter();
+
+  const emailHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   };
 
-  const passwordHandler = (e: any) => {
+  const passwordHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
-  const userLoginHandler = async (event: any) => {
+
+  const userLoginHandler = async (event: React.FormEvent) => {
     event.preventDefault();
-    // setEmail("");
-    // setPassword("");
     try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      await setPersistence(auth, browserSessionPersistence);
+      userCredential = await signInWithEmailAndPassword(auth, email, password);
+      // signedIn = true;
       window.location.href = "/";
     } catch (error: any) {
       alert("Error occurred: " + error.message);
     }
   };
+
   return (
     <div>
       <div className={styles.fullContainer}>
@@ -68,34 +68,112 @@ const Login = () => {
             </span>
           </div>
         </div>
-        {/* </div> */}
-        {/* <div className={styles.container}>
-        <header>
-          <title>Login here</title>
-        </header>
-        <body>
-          <h1>Login here</h1>
-          <div>
-            <input
-              type="email"
-              placeholder="you@your.com"
-              onChange={emailHandler}
-              value={email}
-            />
-            <input
-              type="password"
-              placeholder="jantar mantar..."
-              onChange={passwordHandler}
-              value={password}
-            />
-            <button onClick={userLoginHandler} className={styles.button}>
-              Login
-            </button>
-          </div>
-        </body> */}
       </div>
     </div>
   );
 };
-
+export const getUserCredential = () => userCredential;
 export default Login;
+// export { useAuthEffect };
+
+// "use client";
+// import {
+//   auth,
+//   signInWithEmailAndPassword,
+//   // onAuthStateChanged,
+// } from "@/Config/firebase.config";
+// import React, { useEffect, useState } from "react";
+// import "tailwindcss/tailwind.css";
+// import styles from "../../../Styles/signup.module.css";
+// import Link from "next/link";
+// import { onAuthStateChanged } from "firebase/auth";
+// // global
+// // styles
+
+// const Login = () => {
+//   let signedIn = false;
+//   const [user, setUser] = useState(null);
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
+//   const emailHandler = (e: any) => {
+//     setEmail(e.target.value);
+//   };
+
+//   const passwordHandler = (e: any) => {
+//     setPassword(e.target.value);
+//   };
+//   const userLoginHandler = async (event: any) => {
+//     event.preventDefault();
+//     try {
+//       const userCredential = await signInWithEmailAndPassword(
+//         auth,
+//         email,
+//         password
+//       );
+//       signedIn = true;
+//       window.location.href = "/";
+//     } catch (error: any) {
+//       alert("Error occurred: " + error.message);
+//     }
+//     const useAuthEffect = () => {
+//       useEffect(() => {
+//         const unsubscribe = auth.onAuthStateChanged((currentUser) => {
+//           if (currentUser) {
+//             // User is signed in
+//             setUser(currentUser);
+//           } else {
+//             // User is not signed in
+//             setUser(null);
+//             window.location.href = "/login";
+//             // router.push("/login"); // Redirect to login page or any other desired page
+//           }
+//         });
+
+//         // Clean up the subscription when the component unmounts
+//         return () => unsubscribe();
+//       }, []);
+//     };
+//   };
+//   return (
+//     <div>
+//       <div className={styles.fullContainer}>
+//         <header>
+//           <title>Login here</title>
+//         </header>
+//         <div className={styles.container}>
+//           <div className={styles.internalDiv}>
+//             <h1 className={styles.h1}>Login here.</h1>
+//             <div className={styles.inputDive}>
+//               <input
+//                 type="email"
+//                 placeholder="you@your.com"
+//                 className={styles.input}
+//                 onChange={emailHandler}
+//                 value={email}
+//               />
+//               <input
+//                 type="password"
+//                 placeholder="your password"
+//                 className={styles.input}
+//                 onChange={passwordHandler}
+//                 value={password}
+//               />
+//               <button className={styles.button} onClick={userLoginHandler}>
+//                 Login
+//               </button>
+//             </div>
+//             <span className={styles.span}>
+//               New User?{" "}
+//               <span className={styles.LoginHere}>
+//                 <Link href={"/register"}>Register here.</Link>
+//               </span>
+//             </span>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Login;
+// export { useAuthEffect };

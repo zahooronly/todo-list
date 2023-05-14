@@ -6,6 +6,8 @@ import { auth } from "@/Config/firebase.config";
 import "tailwindcss/tailwind.css";
 import styles from "../../../Styles/signup.module.css";
 import Link from "next/link";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -24,9 +26,10 @@ const Login = () => {
     event.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
+      toast.success("You've been logged in Successfully");
       window.location.href = "/";
     } catch (error: any) {
-      setError("Error occurred: " + error.message);
+      setError("You gotta wrong password/email");
     }
   };
 
@@ -68,6 +71,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

@@ -1,7 +1,8 @@
 "use client";
 import "tailwindcss/tailwind.css";
 import styles from "../../../Styles/signup.module.css";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { auth, createUserWithEmailAndPassword } from "@/Config/firebase.config";
 import React, { useState } from "react";
 import Link from "next/link";
@@ -22,8 +23,6 @@ const Register = () => {
   };
   const userRegisterHandler = async (event: any) => {
     event.preventDefault();
-    window.location.href = "/login";
-
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
@@ -31,6 +30,8 @@ const Register = () => {
         password
       );
       const user = userCredential.user;
+      toast.success("You have been Registered Successfully!");
+      window.location.href = "/login";
       // alert("New user registered: " + user.uid);
     } catch (error: any) {
       console.log("Error occurred: " + error.message);
@@ -83,6 +84,7 @@ const Register = () => {
           </span>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

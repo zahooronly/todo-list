@@ -9,6 +9,10 @@ const Home = () => {
   // const router = useRouter();
   return (
     <div>
+      <head>
+        <title>todo.</title>
+      </head>
+
       {/* <Login /> */}
       <TodoList />
       {/* <Register /> */}

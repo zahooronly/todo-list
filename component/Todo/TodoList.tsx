@@ -69,7 +69,7 @@ const TodoList = () => {
     <div className={styles.bg}>
       {user ? (
         <div>
-          <h1>Welcome, {user.email}</h1>
+          {/* {alert("Welcome" + user.email)} */}
           <div className={styles.container}>
             <h3 className={styles.heading}>Your Tasks.</h3>
             <form className={styles.form} onSubmit={todoAdder}>

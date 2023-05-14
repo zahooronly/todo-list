@@ -5,7 +5,7 @@ import "tailwindcss/tailwind.css";
 import styles from "../../../Styles/signup.module.css";
 import Link from "next/link";
 import { browserSessionPersistence, setPersistence } from "firebase/auth";
-let userCredential: any;
+let userCredential: any = !null && !undefined;
 const Login = () => {
   // let signedIn = false;
   const [email, setEmail] = useState("");

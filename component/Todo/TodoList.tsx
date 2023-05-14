@@ -220,7 +220,7 @@ const TodoList = () => {
 
       {user ? (
         <div>
-          <h1>Welcome, {user.email}</h1>
+          {/* <h1>Welcome, {user.email}</h1> */}
           <div className={styles.container}>
             <h3 className={styles.heading}>Your Tasks.</h3>
             <form className={styles.form} onSubmit={todoAdder}>

@@ -1,16 +1,16 @@
 "use client";
-import { auth, signInWithEmailAndPassword } from "@/Config/firebase.config";
-import React, { useEffect, useState } from "react";
+
+import { signInWithEmailAndPassword } from "firebase/auth";
+import React, { useState } from "react";
+import { auth } from "@/Config/firebase.config";
 import "tailwindcss/tailwind.css";
 import styles from "../../../Styles/signup.module.css";
 import Link from "next/link";
-import { browserSessionPersistence, setPersistence } from "firebase/auth";
-let userCredential: any = !null && !undefined;
+
 const Login = () => {
-  // let signedIn = false;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const router = useRouter();
+  const [error, setError] = useState("");
 
   const emailHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -23,12 +23,9 @@ const Login = () => {
   const userLoginHandler = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
-      await setPersistence(auth, browserSessionPersistence);
-      userCredential = await signInWithEmailAndPassword(auth, email, password);
-      // signedIn = true;
-      window.location.href = "/";
+      await signInWithEmailAndPassword(auth, email, password);
     } catch (error: any) {
-      alert("Error occurred: " + error.message);
+      setError("Error occurred: " + error.message);
     }
   };
 
@@ -41,6 +38,7 @@ const Login = () => {
         <div className={styles.container}>
           <div className={styles.internalDiv}>
             <h1 className={styles.h1}>Login here.</h1>
+            {error && <p>{error}</p>}
             <div className={styles.inputDive}>
               <input
                 type="email"
@@ -72,8 +70,85 @@ const Login = () => {
     </div>
   );
 };
-export const getUserCredential = () => userCredential;
+
 export default Login;
+
+// import { auth, signInWithEmailAndPassword } from "@/Config/firebase.config";
+// import React, { useEffect, useState } from "react";
+// import "tailwindcss/tailwind.css";
+// import styles from "../../../Styles/signup.module.css";
+// import Link from "next/link";
+// import { browserSessionPersistence, setPersistence } from "firebase/auth";
+// let userCredential: any = null;
+// const Login = () => {
+//   // let signedIn = false;
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
+//   // const router = useRouter();
+
+//   const emailHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+//     setEmail(e.target.value);
+//   };
+
+//   const passwordHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+//     setPassword(e.target.value);
+//   };
+
+//   const userLoginHandler = async (event: React.FormEvent) => {
+//     event.preventDefault();
+//     try {
+//       await setPersistence(auth, browserSessionPersistence);
+//       userCredential = await signInWithEmailAndPassword(auth, email, password);
+//       // signedIn = true;
+//       window.location.href = "/";
+//     } catch (error: any) {
+//       alert("Error occurred: " + error.message);
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <div className={styles.fullContainer}>
+//         <header>
+//           <title>Login here</title>
+//         </header>
+//         <div className={styles.container}>
+//           <div className={styles.internalDiv}>
+//             <h1 className={styles.h1}>Login here.</h1>
+//             <div className={styles.inputDive}>
+//               <input
+//                 type="email"
+//                 placeholder="you@your.com"
+//                 className={styles.input}
+//                 onChange={emailHandler}
+//                 value={email}
+//               />
+//               <input
+//                 type="password"
+//                 placeholder="your password"
+//                 className={styles.input}
+//                 onChange={passwordHandler}
+//                 value={password}
+//               />
+//               <button className={styles.button} onClick={userLoginHandler}>
+//                 Login
+//               </button>
+//             </div>
+//             <span className={styles.span}>
+//               New User?{" "}
+//               <span className={styles.LoginHere}>
+//                 <Link href={"/register"}>Register here.</Link>
+//               </span>
+//             </span>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+// export const getUserCredential = () => userCredential;
+// export default Login;
+
 // export { useAuthEffect };
 
 // "use client";

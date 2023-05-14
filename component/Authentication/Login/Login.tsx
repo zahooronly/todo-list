@@ -24,6 +24,7 @@ const Login = () => {
     event.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
+      window.location.href = "/";
     } catch (error: any) {
       setError("Error occurred: " + error.message);
     }

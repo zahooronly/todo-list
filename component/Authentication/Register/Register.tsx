@@ -6,14 +6,10 @@ import "react-toastify/dist/ReactToastify.css";
 import { auth, createUserWithEmailAndPassword } from "@/Config/firebase.config";
 import React, { useState } from "react";
 import Link from "next/link";
-// import { useRouter } from "next/router";
-// import { Router } from "next/router";
 
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [confirm, setConfirm] = useState("");
-  // const router = useRouter();
   const emailHandler = (e: any) => {
     setEmail(e.target.value);
   };
@@ -32,7 +28,6 @@ const Register = () => {
       const user = userCredential.user;
       toast.success("You have been Registered Successfully!");
       window.location.href = "/login";
-      // alert("New user registered: " + user.uid);
     } catch (error: any) {
       console.log("Error occurred: " + error.message);
     }

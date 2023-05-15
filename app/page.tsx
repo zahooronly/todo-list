@@ -15,7 +15,7 @@ const Home = () => {
 
       {/* <Login /> */}
       <TodoList />
-      {/* <Register /> */}
+      <Register />
     </div>
   );
 };

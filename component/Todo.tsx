@@ -1,17 +1,8 @@
 import React from "react";
 import { FaRegTrashAlt, FaBeer } from "react-icons/fa";
 import { BiEdit } from "react-icons/bi";
-// import { FaBeer } from 'react-icons/fa';
 
 import style from "../Styles/todo.module.css";
-// const style = {
-//   li: `flex justify-between p-3 my-2 bg-gray-500`,
-//   liCompleted: `flex justify-between bg-slate-200 capitalize `,
-//   row: `flex`,
-//   textStyle: `ml-2 cursor-pointer text-md `,
-//   checkbox: `valid:border-green-500`,
-//   textCompleted: `ml-2 cursor-pointer line-through text-green-600 text-md`,
-// };
 
 const Todo: any = ({ todo, toggle, deleteTodo }: any) => {
   return (

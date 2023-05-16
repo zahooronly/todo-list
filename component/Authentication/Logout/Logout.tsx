@@ -7,7 +7,6 @@ const Logout = () => {
   const handleSignOut = async () => {
     try {
       await auth.signOut();
-      // router.push("/");
       window.location.href = "/";
     } catch (error) {
       console.log("error ", error);
@@ -15,8 +14,6 @@ const Logout = () => {
   };
   return (
     <div>
-      {/* <button>Logout</button> */}
-
       <button onClick={handleSignOut}>Sign Out</button>
     </div>
   );

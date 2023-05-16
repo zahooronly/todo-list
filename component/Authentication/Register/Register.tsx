@@ -39,8 +39,6 @@ const Register = () => {
         <head>
           <title>Register here</title>
         </head>
-        {/* <div className=" fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-60 flex justify-center items-center z-50"> */}
-        {/* <div className="bg-white rounded-md shadow-md p-8"> */}
         <div className={styles.internalDiv}>
           <h1 className={styles.h1}>Register here.</h1>
           <div className={styles.inputDive}>
@@ -51,8 +49,6 @@ const Register = () => {
               onChange={emailHandler}
               value={email}
             />
-            {/* </div> */}
-            {/* <div className={styles.inputDive}> */}
             <input
               type="password"
               placeholder="your password"
@@ -60,13 +56,6 @@ const Register = () => {
               onChange={passwordHandler}
               value={password}
             />
-            {/* <input
-              type="password"
-              placeholder="confirm your password"
-              className={styles.input}
-              // onChange={passwordHandlerConfirm}
-              // value={confirm}
-            /> */}
             <button className={styles.button} onClick={userRegisterHandler}>
               Register
             </button>

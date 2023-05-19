@@ -30,7 +30,7 @@ const Register = () => {
       toast.success("You have been Registered Successfully!");
       window.location.href = "/login";
     } catch (err) {
-      setErr("Error occurred: [user already registered]");
+      toast.info("Error occurred: [user already registered]");
     }
   };
 

@@ -29,7 +29,7 @@ const Login = () => {
       toast.success("You've been logged in Successfully");
       window.location.href = "/";
     } catch (error: any) {
-      setError("You gotta wrong password/email");
+      toast.error("You gotta wrong password/email");
     }
   };
 

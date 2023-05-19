@@ -10,6 +10,7 @@ import Link from "next/link";
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [err, setErr] = useState("");
   const emailHandler = (e: any) => {
     setEmail(e.target.value);
   };
@@ -28,8 +29,8 @@ const Register = () => {
       const user = userCredential.user;
       toast.success("You have been Registered Successfully!");
       window.location.href = "/login";
-    } catch (error: any) {
-      console.log("Error occurred: " + error.message);
+    } catch (err) {
+      setErr("Error occurred: [user already registered]");
     }
   };
 
@@ -41,6 +42,7 @@ const Register = () => {
         </head>
         <div className={styles.internalDiv}>
           <h1 className={styles.h1}>Register here.</h1>
+          {err && <p>{err}</p>}
           <div className={styles.inputDive}>
             <input
               type="email"
